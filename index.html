@@ -7,93 +7,120 @@
 <style>
 /* Reset */
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: 'Segoe UI', sans-serif; background:#0f0f0f; color:#fff; line-height:1.6; transition: background 0.3s, color 0.3s; }
-a { color: #1E90FF; text-decoration: none; }
-h1,h2,h3 { margin-bottom:1rem; }
+body { font-family: 'Poppins', sans-serif; background:#0d1117; color:#c9d1d9; line-height:1.6; scroll-behavior: smooth; }
+a { color:#58a6ff; text-decoration:none; }
+h1,h2,h3,h4 { margin-bottom:0.5rem; }
+
+/* Container */
+.container { width:90%; max-width:1000px; margin:0 auto; }
 
 /* Hero */
-.hero { text-align:center; padding:6rem 1rem; background:#0f0f0f; }
-.hero img { width:160px; height:160px; border-radius:50%; object-fit:cover; border:4px solid #1E90FF; }
-.hero h1 { font-size:2.5rem; margin:1rem 0; animation: fadeIn 1s ease-in; }
-.hero p { font-size:1.1rem; color:#aaa; animation: fadeIn 2s ease-in; }
-.hero .btn { display:inline-block; margin:0.5rem; padding:0.5rem 1.2rem; border:2px solid #1E90FF; border-radius:4px; transition:0.3s; }
-.hero .btn:hover { background:#1E90FF; color:#fff; }
+.hero { display:flex; flex-direction:column; justify-content:center; align-items:center; height:100vh; text-align:center; }
+.hero img { width:160px; height:160px; border-radius:50%; border:3px solid #58a6ff; object-fit:cover; margin-bottom:1rem; }
+.hero h1 { font-size:2.5rem; margin-bottom:0.5rem; }
+.hero .typing { font-size:1.3rem; color:#8b949e; min-height:1.5rem; }
+.hero .buttons { margin-top:1rem; }
+.hero .btn { display:inline-block; margin:0.5rem; padding:0.5rem 1.2rem; border:2px solid #58a6ff; border-radius:5px; transition:0.3s; }
+.hero .btn:hover { background:#58a6ff; color:#0d1117; }
+
+/* Sections */
+section { padding:4rem 0; }
+section h2 { text-align:center; font-size:2rem; margin-bottom:2rem; color:#58a6ff; }
 
 /* Skills */
-.skills { padding:3rem 1rem; text-align:center; background:#111; }
-.skills h2 { margin-bottom:2rem; }
-.skills-list { list-style:none; display:flex; flex-wrap:wrap; justify-content:center; }
-.skills-list li { margin:0.5rem; padding:0.6rem 1rem; background:#222; border-radius:6px; transition:0.3s; }
-.skills-list li:hover { background:#1E90FF; color:#fff; }
+.skills-list { display:flex; flex-wrap:wrap; justify-content:center; list-style:none; gap:1rem; }
+.skills-list li { padding:0.5rem 1rem; border:1px solid #30363d; border-radius:5px; transition:0.3s; }
+.skills-list li:hover { background:#58a6ff; color:#0d1117; }
 
 /* Projects */
-.projects { padding:3rem 1rem; background:#0f0f0f; }
-.projects h2 { text-align:center; margin-bottom:2rem; }
 .projects-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem; }
-.project-card { background:#111; padding:1.5rem; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.5); transition:0.3s; }
+.project-card { background:#161b22; padding:1.5rem; border-radius:8px; transition:0.3s; box-shadow:0 4px 10px rgba(0,0,0,0.5); }
 .project-card:hover { transform: translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.7); }
-.project-card h3 { margin-bottom:0.5rem; }
-.project-card p { color:#aaa; margin-bottom:1rem; }
-.project-card a { display:inline-block; margin-top:0.5rem; padding:0.5rem 1rem; border:1px solid #1E90FF; border-radius:4px; transition:0.3s; }
-.project-card a:hover { background:#1E90FF; color:#fff; }
+.project-card h3 { margin-bottom:0.5rem; color:#58a6ff; }
+.project-card p { color:#8b949e; margin-bottom:1rem; }
+.project-card a { display:inline-block; padding:0.5rem 1rem; border:1px solid #58a6ff; border-radius:5px; transition:0.3s; }
+.project-card a:hover { background:#58a6ff; color:#0d1117; }
+
+/* Contact */
+.contact-form { display:flex; flex-direction:column; gap:1rem; max-width:500px; margin:0 auto; }
+.contact-form input, .contact-form textarea { padding:0.8rem; border-radius:5px; border:1px solid #30363d; background:#0d1117; color:#c9d1d9; }
+.contact-form button { padding:0.6rem 1rem; border:none; border-radius:5px; background:#58a6ff; color:#0d1117; cursor:pointer; transition:0.3s; }
+.contact-form button:hover { background:#1f6feb; }
 
 /* Footer */
-footer { text-align:center; padding:2rem 1rem; background:#111; color:#aaa; }
-footer a { margin:0 0.5rem; }
+footer { text-align:center; padding:2rem 0; border-top:1px solid #30363d; color:#8b949e; }
 
 /* Animations */
-@keyframes fadeIn { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
+@keyframes typing {
+  0% { width:0; }
+  100% { width:100%; }
+}
+.typing-text { overflow:hidden; border-right:2px solid #58a6ff; white-space:nowrap; animation: typing 3s steps(20) infinite alternate; }
 
-/* Dark Mode Toggle (opcional) */
-.toggle-dark { position:fixed; top:1rem; right:1rem; padding:0.4rem 0.8rem; border:1px solid #1E90FF; border-radius:4px; cursor:pointer; background:#111; color:#1E90FF; transition:0.3s; }
-.toggle-dark:hover { background:#1E90FF; color:#fff; }
+/* Smooth fade in */
+.fade-in { opacity:0; transform:translateY(20px); animation: fadeInUp 1s forwards; }
+@keyframes fadeInUp { to { opacity:1; transform:translateY(0); } }
 </style>
 </head>
 <body>
 
-<div class="toggle-dark" onclick="toggleDark()">Modo Claro/Oscuro</div>
-
 <header class="hero">
-  <img src="https://via.placeholder.com/160" alt="Mi Foto">
-  <h1>Hola, soy [Tu Nombre]</h1>
-  <p>Full-Stack Developer / Diseñador / Creativo</p>
-  <div>
+  <img src="https://via.placeholder.com/160" alt="Mi foto">
+  <h1>[Tu Nombre]</h1>
+  <div class="typing"><span id="typing-text" class="typing-text">Full-Stack Developer | Diseñador | Creativo</span></div>
+  <div class="buttons">
     <a href="https://github.com/tuusuario" class="btn" target="_blank">GitHub</a>
     <a href="https://linkedin.com/in/tuusuario" class="btn" target="_blank">LinkedIn</a>
     <a href="mailto:tuemail@example.com" class="btn">Email</a>
   </div>
 </header>
 
-<section class="skills">
-  <h2>Habilidades</h2>
-  <ul class="skills-list">
-    <li>JavaScript</li>
-    <li>React</li>
-    <li>Node.js</li>
-    <li>Python</li>
-    <li>HTML/CSS</li>
-    <li>UI/UX</li>
-  </ul>
+<section class="skills fade-in">
+  <div class="container">
+    <h2>Habilidades</h2>
+    <ul class="skills-list">
+      <li>JavaScript</li>
+      <li>React</li>
+      <li>Node.js</li>
+      <li>Python</li>
+      <li>HTML/CSS</li>
+      <li>UI/UX</li>
+    </ul>
+  </div>
 </section>
 
-<section class="projects">
-  <h2>Proyectos Destacados</h2>
-  <div class="projects-grid">
-    <div class="project-card">
-      <h3>Proyecto 1</h3>
-      <p>Descripción breve de tu proyecto.</p>
-      <a href="https://github.com/tuusuario/proyecto1" target="_blank">Código</a>
+<section class="projects fade-in">
+  <div class="container">
+    <h2>Proyectos Destacados</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Proyecto 1</h3>
+        <p>Descripción breve del proyecto.</p>
+        <a href="https://github.com/tuusuario/proyecto1" target="_blank">Código</a>
+      </div>
+      <div class="project-card">
+        <h3>Proyecto 2</h3>
+        <p>Descripción breve del proyecto.</p>
+        <a href="https://github.com/tuusuario/proyecto2" target="_blank">Código</a>
+      </div>
+      <div class="project-card">
+        <h3>Proyecto 3</h3>
+        <p>Descripción breve del proyecto.</p>
+        <a href="https://github.com/tuusuario/proyecto3" target="_blank">Código</a>
+      </div>
     </div>
-    <div class="project-card">
-      <h3>Proyecto 2</h3>
-      <p>Descripción breve de tu proyecto.</p>
-      <a href="https://github.com/tuusuario/proyecto2" target="_blank">Código</a>
-    </div>
-    <div class="project-card">
-      <h3>Proyecto 3</h3>
-      <p>Descripción breve de tu proyecto.</p>
-      <a href="https://github.com/tuusuario/proyecto3" target="_blank">Código</a>
-    </div>
+  </div>
+</section>
+
+<section class="contact fade-in">
+  <div class="container">
+    <h2>Contacto</h2>
+    <form class="contact-form">
+      <input type="text" placeholder="Tu nombre">
+      <input type="email" placeholder="Tu email">
+      <textarea rows="5" placeholder="Mensaje"></textarea>
+      <button type="submit">Enviar</button>
+    </form>
   </div>
 </section>
 
@@ -106,10 +133,15 @@ footer a { margin:0 0.5rem; }
 </footer>
 
 <script>
-function toggleDark() {
-  document.body.style.background = document.body.style.background === 'white' ? '#0f0f0f' : 'white';
-  document.body.style.color = document.body.style.color === 'black' ? '#fff' : 'black';
+// Efecto typing
+const text = "Full-Stack Developer | Diseñador | Creativo";
+const typingElement = document.getElementById("typing-text");
+let index = 0;
+function typeEffect() {
+  typingElement.textContent = text.slice(0,index++);
+  if(index > text.length) index = 0;
 }
+setInterval(typeEffect,150);
 </script>
 
 </body>
