@@ -1,3 +1,12 @@
+/* Variables de color */
+:root {
+  --color-1: #d67d3d;
+  --color-2: #c88651;
+  --color-3: #e8b34a;
+  --color-4: #b85b32;
+  --color-5: #7d402b;
+}
+
 /* Reset */
 * {
   margin: 0;
@@ -7,14 +16,14 @@
 }
 
 body {
-  background: radial-gradient(ellipse at bottom, #050505 0%, #000000 100%);
+  background: linear-gradient(to bottom, #ffd9a0, #ff9f43);
   color: white;
   overflow-x: hidden;
 }
 
 /* Glass effect */
 .glass {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border-radius: 15px;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -24,14 +33,19 @@ body {
 
 /* Glow text */
 .glow {
-  color: #ffffff;
   text-shadow:
      0 0 5px #fff,
-     0 0 10px #0ff,
-     0 0 20px #0ff,
-     0 0 40px #0ff,
-     0 0 80px #0ff;
+     0 0 10px #fffc,
+     0 0 20px #fffc,
+     0 0 40px #fffc;
 }
+
+/* Colores para títulos y proyectos */
+.color-1 { color: var(--color-1); }
+.color-2 { color: var(--color-2); }
+.color-3 { color: var(--color-3); }
+.color-4 { color: var(--color-4); }
+.color-5 { color: var(--color-5); }
 
 /* Navbar */
 .navbar {
@@ -59,8 +73,8 @@ body {
 }
 
 .navbar a:hover {
-  color: #0ff;
-  text-shadow: 0 0 10px #0ff;
+  color: #fff7aa;
+  text-shadow: 0 0 10px #fff7aa;
 }
 
 /* Sections */
@@ -84,33 +98,20 @@ body {
   justify-content: center;
   font-size: 1.2rem;
   text-align: center;
+  transition: transform 0.3s;
 }
 
-/* Stars parallax */
-.stars, .stars2, .stars3 {
+.project:hover {
+  transform: translateY(-10px);
+}
+
+/* Canvas de hojas */
+#leavesCanvas {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background: transparent;
+  pointer-events: none;
   z-index: -1;
-}
-
-.stars {
-  background: url('https://i.ibb.co/3yYcR2k/stars1.png') repeat;
-  animation: moveStars 200s linear infinite;
-}
-
-.stars2 {
-  background: url('https://i.ibb.co/4VYJ6Yw/stars2.png') repeat;
-  animation: moveStars 400s linear infinite;
-}
-
-.stars3 {
-  background: url('https://i.ibb.co/FK5V0jf/stars3.png') repeat;
-  animation: moveStars 600s linear infinite;
-}
-
-@keyframes moveStars {
-  from { background-position: 0 0; }
-  to { background-position: -10000px 5000px; }
 }
