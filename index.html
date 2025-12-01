@@ -3,28 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mi Portfolio</title>
+<title>Portfolio Local</title>
 <style>
-/* Reset */
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: 'Poppins', sans-serif; background:#0d1117; color:#c9d1d9; line-height:1.6; scroll-behavior: smooth; }
+body { margin:0; font-family:'Poppins', sans-serif; background:#0d1117; color:#c9d1d9; scroll-behavior:smooth; }
 a { color:#58a6ff; text-decoration:none; }
 h1,h2,h3,h4 { margin-bottom:0.5rem; }
-
-/* Container */
-.container { width:90%; max-width:1000px; margin:0 auto; }
 
 /* Hero */
 .hero { display:flex; flex-direction:column; justify-content:center; align-items:center; height:100vh; text-align:center; }
 .hero img { width:160px; height:160px; border-radius:50%; border:3px solid #58a6ff; object-fit:cover; margin-bottom:1rem; }
 .hero h1 { font-size:2.5rem; margin-bottom:0.5rem; }
 .hero .typing { font-size:1.3rem; color:#8b949e; min-height:1.5rem; }
-.hero .buttons { margin-top:1rem; }
-.hero .btn { display:inline-block; margin:0.5rem; padding:0.5rem 1.2rem; border:2px solid #58a6ff; border-radius:5px; transition:0.3s; }
+.hero .btn { margin:0.5rem; padding:0.5rem 1.2rem; border:2px solid #58a6ff; border-radius:5px; transition:0.3s; display:inline-block; }
 .hero .btn:hover { background:#58a6ff; color:#0d1117; }
 
 /* Sections */
-section { padding:4rem 0; }
+section { padding:4rem 1rem; }
 section h2 { text-align:center; font-size:2rem; margin-bottom:2rem; color:#58a6ff; }
 
 /* Skills */
@@ -50,97 +44,88 @@ section h2 { text-align:center; font-size:2rem; margin-bottom:2rem; color:#58a6f
 /* Footer */
 footer { text-align:center; padding:2rem 0; border-top:1px solid #30363d; color:#8b949e; }
 
-/* Animations */
-@keyframes typing {
-  0% { width:0; }
-  100% { width:100%; }
-}
-.typing-text { overflow:hidden; border-right:2px solid #58a6ff; white-space:nowrap; animation: typing 3s steps(20) infinite alternate; }
-
-/* Smooth fade in */
-.fade-in { opacity:0; transform:translateY(20px); animation: fadeInUp 1s forwards; }
-@keyframes fadeInUp { to { opacity:1; transform:translateY(0); } }
+/* Typing animation */
+@keyframes typing { 0% { width:0; } 100% { width:100%; } }
+.typing-text { overflow:hidden; border-right:2px solid #58a6ff; white-space:nowrap; animation: typing 3s steps(30) infinite alternate; }
 </style>
 </head>
 <body>
 
 <header class="hero">
-  <img src="https://via.placeholder.com/160" alt="Mi foto">
+  <img src="https://via.placeholder.com/160" alt="Mi Foto">
   <h1>[Tu Nombre]</h1>
-  <div class="typing"><span id="typing-text" class="typing-text">Full-Stack Developer | Diseñador | Creativo</span></div>
-  <div class="buttons">
-    <a href="https://github.com/tuusuario" class="btn" target="_blank">GitHub</a>
-    <a href="https://linkedin.com/in/tuusuario" class="btn" target="_blank">LinkedIn</a>
-    <a href="mailto:tuemail@example.com" class="btn">Email</a>
+  <div class="typing"><span id="typing-text" class="typing-text">Full-Stack Developer | Freelancer | Problem Solver</span></div>
+  <div>
+    <a href="#" class="btn">GitHub</a>
+    <a href="#" class="btn">LinkedIn</a>
+    <a href="#" class="btn">Email</a>
   </div>
 </header>
 
-<section class="skills fade-in">
-  <div class="container">
-    <h2>Habilidades</h2>
-    <ul class="skills-list">
-      <li>JavaScript</li>
-      <li>React</li>
-      <li>Node.js</li>
-      <li>Python</li>
-      <li>HTML/CSS</li>
-      <li>UI/UX</li>
-    </ul>
-  </div>
+<section class="about">
+  <h2>Sobre mí</h2>
+  <p style="text-align:center; max-width:600px; margin:0 auto;">Soy un desarrollador full-stack apasionado por crear experiencias digitales dinámicas. Experto en React, Next.js y Node.js. Me encanta resolver problemas complejos y aprender nuevas tecnologías.</p>
 </section>
 
-<section class="projects fade-in">
-  <div class="container">
-    <h2>Proyectos Destacados</h2>
-    <div class="projects-grid">
-      <div class="project-card">
-        <h3>Proyecto 1</h3>
-        <p>Descripción breve del proyecto.</p>
-        <a href="https://github.com/tuusuario/proyecto1" target="_blank">Código</a>
-      </div>
-      <div class="project-card">
-        <h3>Proyecto 2</h3>
-        <p>Descripción breve del proyecto.</p>
-        <a href="https://github.com/tuusuario/proyecto2" target="_blank">Código</a>
-      </div>
-      <div class="project-card">
-        <h3>Proyecto 3</h3>
-        <p>Descripción breve del proyecto.</p>
-        <a href="https://github.com/tuusuario/proyecto3" target="_blank">Código</a>
-      </div>
+<section class="skills">
+  <h2>Habilidades</h2>
+  <ul class="skills-list">
+    <li>React</li>
+    <li>Next.js</li>
+    <li>TypeScript</li>
+    <li>Node.js</li>
+    <li>Tailwind CSS</li>
+    <li>Figma</li>
+    <li>MongoDB</li>
+    <li>PostgreSQL</li>
+  </ul>
+</section>
+
+<section class="projects">
+  <h2>Proyectos Destacados</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <h3>Proyecto 1</h3>
+      <p>Descripción breve del proyecto.</p>
+      <a href="#">Ver Código</a>
+    </div>
+    <div class="project-card">
+      <h3>Proyecto 2</h3>
+      <p>Descripción breve del proyecto.</p>
+      <a href="#">Ver Código</a>
+    </div>
+    <div class="project-card">
+      <h3>Proyecto 3</h3>
+      <p>Descripción breve del proyecto.</p>
+      <a href="#">Ver Código</a>
     </div>
   </div>
 </section>
 
-<section class="contact fade-in">
-  <div class="container">
-    <h2>Contacto</h2>
-    <form class="contact-form">
-      <input type="text" placeholder="Tu nombre">
-      <input type="email" placeholder="Tu email">
-      <textarea rows="5" placeholder="Mensaje"></textarea>
-      <button type="submit">Enviar</button>
-    </form>
-  </div>
+<section class="contact">
+  <h2>Contacto</h2>
+  <form class="contact-form">
+    <input type="text" placeholder="Tu nombre">
+    <input type="email" placeholder="Tu email">
+    <textarea rows="5" placeholder="Mensaje"></textarea>
+    <button type="submit">Enviar</button>
+  </form>
 </section>
 
 <footer>
   <p>© 2025 [Tu Nombre]. Todos los derechos reservados.</p>
   <p>
-    <a href="https://github.com/tuusuario" target="_blank">GitHub</a> |
-    <a href="https://linkedin.com/in/tuusuario" target="_blank">LinkedIn</a>
+    <a href="#">GitHub</a> |
+    <a href="#">LinkedIn</a>
   </p>
 </footer>
 
 <script>
 // Efecto typing
-const text = "Full-Stack Developer | Diseñador | Creativo";
+const text = "Full-Stack Developer | Freelancer | Problem Solver";
 const typingElement = document.getElementById("typing-text");
 let index = 0;
-function typeEffect() {
-  typingElement.textContent = text.slice(0,index++);
-  if(index > text.length) index = 0;
-}
+function typeEffect() { typingElement.textContent = text.slice(0,index++); if(index>text.length) index=0; }
 setInterval(typeEffect,150);
 </script>
 
