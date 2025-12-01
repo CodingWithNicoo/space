@@ -1,46 +1,50 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio Otoñal Avanzado</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi Portfolio</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <!-- Canvas para hojas y partículas -->
-  <canvas id="leavesCanvas"></canvas>
-
-  <!-- Menú centrado -->
-  <header class="navbar glass">
-    <nav>
-      <ul>
-        <li><a href="#about">Sobre mí</a></li>
-        <li><a href="#projects">Proyectos</a></li>
-        <li><a href="#contact">Contacto</a></li>
-      </ul>
-    </nav>
+  <header class="hero">
+    <img class="hero__img" src="assets/profile.jpg" alt="Mi foto" />
+    <h1>Hola, soy [Tu Nombre]</h1>
+    <p>Full‑Stack Developer / Diseñador / ...</p>
+    <p><a href="mailto:tuemail@example.com">tuemail@example.com</a></p>
   </header>
 
-  <!-- Secciones -->
-  <section id="about" class="section">
-    <h1 class="glow color-1">Sobre mí</h1>
-    <p>Desarrollador web amante del otoño y la naturaleza.</p>
+  <section id="skills" class="skills">
+    <h2>Mis Habilidades</h2>
+    <ul class="skills__list">
+      <li>JavaScript</li>
+      <li>React</li>
+      <li>Python</li>
+      <!-- ... -->
+    </ul>
   </section>
 
-  <section id="projects" class="section">
-    <h1 class="glow color-2">Proyectos</h1>
-    <div class="projects">
-      <div class="project glass glow color-3">Proyecto 1</div>
-      <div class="project glass glow color-4">Proyecto 2</div>
-      <div class="project glass glow color-5">Proyecto 3</div>
+  <section id="projects" class="projects">
+    <h2>Proyectos destacados</h2>
+    <div class="projects__grid">
+      <!-- Ejemplo proyecto -->
+      <div class="project-card">
+        <h3>Proyecto 1</h3>
+        <p>Descripción breve de lo que haces.</p>
+        <a href="https://github.com/tuusuario/proyecto1" target="_blank">Código</a>
+        <!-- Si tienes demo: <a href="https://...">Demo</a> -->
+      </div>
+      <!-- Añade más proyectos -->
     </div>
   </section>
 
-  <section id="contact" class="section">
-    <h1 class="glow color-3">Contacto</h1>
-    <p>Email: ejemplo@correo.com</p>
-  </section>
-
-  <script src="script.js"></script>
+  <footer class="footer">
+    <p>© 2025 [Tu Nombre]. Todos los derechos reservados.</p>
+    <p>
+      <a href="https://github.com/tuusuario" target="_blank">GitHub</a> |
+      <a href="https://linkedin.com/in/tuusuario" target="_blank">LinkedIn</a>
+      <!-- añade otras redes si quieres -->
+    </p>
+  </footer>
 </body>
 </html>
