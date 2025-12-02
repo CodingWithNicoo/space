@@ -1,0 +1,45 @@
+:root {
+  --light-blue: #6ecffb;
+  --dark-blue: #001f3f;
+}
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(var(--light-blue), var(--dark-blue));
+  transition: background 0.3s ease;
+  height: 200vh;
+}
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+  color: white;
+}
+.projects {
+  padding: 50px;
+  color: white;
+}
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+.project {
+  background: rgba(255,255,255,0.2);
+  padding: 30px;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+}
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  width: 100vw;
+  height: 100vh;
+}
+#fish {
+  z-index: 2;
+}
+#bubbles {
+  z-index: 1;
+}
