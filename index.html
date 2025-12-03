@@ -3,39 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ocean Deep Portfolio</title>
+  <title>My Lab – Portfolio</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <nav class="floating-menu">
+    <a href="#home">Inicio</a>
+    <a href="#projects">Proyectos</a>
+    <a href="#contact">Contacto</a>
+  </nav>
 
-  <header class="hero">
-    <h1>Mi Portfolio Submarino</h1>
-    <p>Explora las profundidades de mis proyectos</p>
-  </header>
+  <div class="clouds"></div>
 
-  <main>
-    <section class="projects">
-      <h2>Proyectos Destacados</h2>
-      <div class="grid">
-        <article class="card">Proyecto 1</article>
-        <article class="card">Proyecto 2</article>
-        <article class="card">Proyecto 3</article>
+  <section id="home" class="hero">
+    <h1>Bienvenido a Mi Laboratorio</h1>
+    <p>Experimentos digitales, efectos y creatividad.</p>
+  </section>
+
+  <section id="projects" class="carousel-section">
+    <div class="carousel">
+      <div class="carousel-track">
+        <img src="https://picsum.photos/800/400?1" />
+        <img src="https://picsum.photos/800/400?2" />
+        <img src="https://picsum.photos/800/400?3" />
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="about">
-      <h2>Sobre mí</h2>
-      <p>Desarrollador creativo apasionado por las experiencias inmersivas.</p>
-    </section>
-  </main>
+  <div id="jelly">
+    <div class="jelly-body"></div>
+    <div class="tentacle"></div>
+    <div class="tentacle"></div>
+    <div class="tentacle"></div>
+    <div class="tentacle"></div>
+  </div>
 
-  <footer class="ocean-floor">
-    <p>Fondo del Océano — Gracias por explorar</p>
-  </footer>
-
-  <!-- Lienzos de efectos -->
-  <canvas id="bubbles"></canvas>
-  <canvas id="fish"></canvas>
+  <audio id="music" src="music.mp3" loop></audio>
+  <button id="musicToggle" class="music-btn">🔊</button>
 
   <script src="script.js"></script>
 </body>
