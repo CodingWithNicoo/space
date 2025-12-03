@@ -3,44 +3,320 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Lab – Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>My Lab – Versión Inmersiva</title>
+  <style>
+    :root {
+      --thistle: #dec9e9ff;
+      --thistle-2: #dac3e8ff;
+      --wisteria: #d2b7e5ff;
+      --wisteria-2: #c19ee0ff;
+      --bright-lavender: #b185dbff;
+      --lavender-purple: #a06cd5ff;
+      --lavender-purple-2: #9163cbff;
+      --deep-lilac: #815ac0ff;
+      --deep-lilac-2: #7251b5ff;
+      --deep-lilac-3: #6247aaff;
+    }
+
+    /* === Base y accesibilidad visual reducida (menos brillo) === */
+    html,body{height:100%;}
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial;
+      background-color: #0f0916 !important;
+      background-image: radial-gradient(circle at center, #1c1430 0%, #0f0916 100%);
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      color: #e8e6ee;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Centered floating menu */
+    #floating-menu {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(12,10,18,0.45);
+      padding: 10px 20px;
+      border-radius: 14px;
+      backdrop-filter: blur(6px) saturate(120%);
+      z-index: 1200;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+      animation: menuGlow 4s ease-in-out infinite;
+    }
+    #floating-menu nav { display:flex; gap:22px; align-items:center; }
+    #floating-menu a{
+      color: var(--thistle);
+      text-decoration:none;
+      font-weight:600;
+      font-size:1rem;
+      padding:6px 4px;
+      transition: color .22s ease, transform .18s ease;
+      display:inline-block;
+    }
+    #floating-menu a:hover{ color:var(--bright-lavender); transform:translateY(-3px); }
+    @keyframes menuGlow{
+      0%{ box-shadow: 0 0 12px rgba(145,98,200,0.12);} 
+      50%{ box-shadow: 0 0 26px rgba(145,98,200,0.28);} 
+      100%{ box-shadow: 0 0 12px rgba(145,98,200,0.12);} 
+    }
+
+    /* Hero */
+    #hero{height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:0 20px;}
+    #hero h1{font-size:3rem; margin:0 0 8px; color:var(--wisteria-2); text-shadow:0 4px 18px rgba(0,0,0,0.65);}
+    #hero p{max-width:720px; color:var(--thistle); font-size:1.05rem; margin:0}
+
+    /* Sections */
+    .projects-section{padding:100px 40px; text-align:center}
+    .projects-section h2{color:var(--wisteria); margin-top:0}
+
+    .project-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px; margin-top:28px}
+    .card{background:rgba(255,255,255,0.03); padding:20px; border-radius:14px; backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,0.04)}
+
+    /* Clouds */
+    .cloud{position:fixed; top:-220px; width:620px; height:330px; background: radial-gradient(circle at 30% 40%, rgba(255,255,255,0.65) 0%, rgba(255,255,255,0.2) 38%, rgba(255,255,255,0.06) 70%); filter:blur(36px); border-radius:50%; opacity:0.38; pointer-events:none; z-index:50; will-change:transform}
+    .cloud.c1{left:4%; animation:cloudDrift 70s linear infinite}
+    .cloud.c2{left:32%; animation:cloudDrift 82s linear infinite}
+    .cloud.c3{left:64%; animation:cloudDrift 68s linear infinite}
+    .cloud.c4{left:86%; animation:cloudDrift 96s linear infinite}
+    @keyframes cloudDrift{ 0%{transform:translateY(-320px) translateX(0) scale(1); opacity:0} 20%{opacity:.55} 50%{transform:translateY(520px) translateX(-60px) scale(1.25); opacity:.7} 100%{transform:translateY(1150px) translateX(20px) scale(1.6); opacity:0} }
+
+    /* Background particles */
+    .particle{position:fixed; width:6px; height:6px; background:var(--bright-lavender); border-radius:50%; opacity:0.6; filter:blur(0.6px); pointer-events:none; z-index:60}
+
+    /* Cursor trail */
+    .cursor-dot{position:fixed; width:8px; height:8px; background:var(--bright-lavender); border-radius:50%; pointer-events:none; opacity:0.8; filter:blur(2px); animation:cursorFade .8s linear forwards; z-index:1400}
+    @keyframes cursorFade{from{transform:scale(1);opacity:0.9}to{transform:scale(0);opacity:0}}
+
+    /* Medusa */
+    #jelly{ position:fixed; left:200px; top:200px; width:96px; height:140px; z-index:1000; pointer-events:none; }
+    .jelly-head{ width:96px; height:56px; background:var(--lavender-purple-2); border-radius:50% 50% 46% 46%; box-shadow:0 0 18px rgba(145,98,200,0.18); }
+    .tentacles{ position:relative; width:100%; display:flex; justify-content:center; gap:6px; margin-top:6px }
+    .tentacles .tent { width:12px; height:78px; position:relative; overflow:visible; }
+    .tent .inner { position:absolute; left:0; top:0; width:12px; height:78px; background:linear-gradient(180deg,var(--deep-lilac), var(--lavender-purple)); border-radius:8px; box-shadow:0 0 10px rgba(177,133,219,0.12); transform-origin:top center; animation:waveTent 2.6s ease-in-out infinite; }
+    .tent:nth-child(2) .inner{ animation-delay:.18s }
+    .tent:nth-child(3) .inner{ animation-delay:.36s }
+    .tent:nth-child(4) .inner{ animation-delay:.54s }
+    .tent:nth-child(5) .inner{ animation-delay:.72s }
+    @keyframes waveTent{ 0%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(12px) rotate(8deg)} 100%{transform:translateY(0) rotate(0deg)} }
+
+    /* subtle glow and text */
+    h1,h2,p,nav a{ font-weight:600; letter-spacing:0.2px; text-shadow:0 4px 18px rgba(0,0,0,0.6) }
+
+    /* carousel */
+    .carousel{ width:80%; margin:36px auto; overflow:hidden; border-radius:14px }
+    .carousel-track{ display:flex; animation:slide 12s infinite linear }
+    .carousel-track img{ min-width:100%; width:100%; object-fit:cover; display:block; background:transparent; }
+    @keyframes slide{ 0%{transform:translateX(0)} 33%{transform:translateX(-100%)} 66%{transform:translateX(-200%)} 100%{transform:translateX(0)} }
+
+    /* button press particle effect (simple) */
+    button, a{ position:relative; overflow:hidden }
+    button::after, a::after{ content:""; position:absolute; width:6px; height:6px; background:var(--bright-lavender); border-radius:50%; opacity:0; transform:scale(0); transition:0.36s }
+    button:active::after, a:active::after{ opacity:1; transform:scale(16) }
+
+    /* responsive tweaks */
+    @media (max-width:720px){ #hero h1{font-size:2rem} #floating-menu nav{gap:14px} .carousel{width:94%} }
+  </style>
+
+  <!-- Música de fondo (si el navegador lo bloquea, el usuario podrá darle play) -->
+  <audio id="deep-music" src="https://cdn.pixabay.com/audio/2022/03/15/audio_4f76a9db2e.mp3" loop></audio>
 </head>
 <body>
-  <nav class="floating-menu">
-    <a href="#home">Inicio</a>
-    <a href="#projects">Proyectos</a>
-    <a href="#contact">Contacto</a>
-  </nav>
 
-  <div class="clouds"></div>
+  <!-- Nubes visibles -->
+  <div class="cloud c1"></div>
+  <div class="cloud c2"></div>
+  <div class="cloud c3"></div>
+  <div class="cloud c4"></div>
 
-  <section id="home" class="hero">
-    <h1>Bienvenido a Mi Laboratorio</h1>
-    <p>Experimentos digitales, efectos y creatividad.</p>
+  <!-- Floating centered menu -->
+  <div id="floating-menu">
+    <nav>
+      <a href="#hero">Inicio</a>
+      <a href="#projects">Proyectos</a>
+      <a href="#about">Sobre mí</a>
+      <a href="#contact">Contacto</a>
+    </nav>
+  </div>
+
+  <section id="hero">
+    <h1>Bienvenido a Mi Galaxia Creativa</h1>
+    <p>Explora mis proyectos, ideas y el camino que sigo en mi viaje como desarrollador. Todo en un solo universo.</p>
   </section>
 
-  <section id="projects" class="carousel-section">
+  <section class="projects-section" id="projects">
+
+    <!-- Carrusel -->
     <div class="carousel">
       <div class="carousel-track">
-        <img src="https://picsum.photos/800/400?1" />
-        <img src="https://picsum.photos/800/400?2" />
-        <img src="https://picsum.photos/800/400?3" />
+        <img src="https://picsum.photos/1000/600?1" alt="slide1" />
+        <img src="https://picsum.photos/1000/600?2" alt="slide2" />
+        <img src="https://picsum.photos/1000/600?3" alt="slide3" />
+      </div>
+    </div>
+
+    <h2>Mis Proyectos</h2>
+    <div class="project-grid">
+      <div class="card">
+        <h3>Proyecto 1</h3>
+        <p>Descripción breve del proyecto, tecnologías usadas y objetivo.</p>
+      </div>
+      <div class="card">
+        <h3>Proyecto 2</h3>
+        <p>Descripción breve del proyecto.</p>
+      </div>
+      <div class="card">
+        <h3>Proyecto 3</h3>
+        <p>Descripción breve del proyecto.</p>
       </div>
     </div>
   </section>
 
+  <section id="about" class="projects-section">
+    <h2>Sobre mí</h2>
+    <p>Soy un desarrollador apasionado por crear experiencias únicas e interactivas, combinando diseño y tecnología.</p>
+  </section>
+
+  <section id="contact" class="projects-section">
+    <h2>Contacto</h2>
+    <p>Puedes escribirme a: <strong>tuemail@example.com</strong></p>
+  </section>
+
+  <!-- Medusa (jelly) element -->
   <div id="jelly">
-    <div class="jelly-body"></div>
-    <div class="tentacle"></div>
-    <div class="tentacle"></div>
-    <div class="tentacle"></div>
-    <div class="tentacle"></div>
+    <div class="jelly-head"></div>
+    <div class="tentacles">
+      <div class="tent"><div class="inner"></div></div>
+      <div class="tent"><div class="inner"></div></div>
+      <div class="tent"><div class="inner"></div></div>
+      <div class="tent"><div class="inner"></div></div>
+      <div class="tent"><div class="inner"></div></div>
+    </div>
   </div>
 
-  <audio id="music" src="music.mp3" loop></audio>
-  <button id="musicToggle" class="music-btn">🔊</button>
+  <!-- Scripts: run after DOMContentLoaded to ensure elements exist -->
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // -- Música: reproducir si es posible, si no mostrar control --
+    const music = document.getElementById('deep-music');
+    if(music){
+      music.volume = 0.46;
+      music.setAttribute('aria-hidden','true');
+    }
 
-  <script src="script.js"></script>
+    function tryPlay(){
+      if(!music) return;
+      music.play().catch(()=>{
+        const btn = document.createElement('button');
+        btn.textContent = '▶️ Reproducir música';
+        btn.setAttribute('aria-label','Reproducir música de fondo');
+        Object.assign(btn.style,{position:'fixed', left:'14px', bottom:'14px', zIndex:1400, padding:'8px 12px', borderRadius:'10px', border:'none', background:'rgba(10,8,15,0.6)', color:'var(--thistle)'});
+        btn.onclick = ()=>{ music.play().catch(()=>{}); btn.remove(); };
+        document.body.appendChild(btn);
+      });
+    }
+    tryPlay();
+
+    // -- Background particles --
+    const viewportH = Math.max(window.innerHeight, 700);
+    for(let i=0;i<28;i++){
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = (Math.random()*100) + 'vw';
+      p.style.top = (Math.random()*viewportH * 1.2 - 120) + 'px';
+      p.style.opacity = (0.18 + Math.random()*0.6).toFixed(2);
+      p.style.transform = `scale(${0.6 + Math.random()*1.2})`;
+      document.body.appendChild(p);
+    }
+
+    // -- Cursor trail --
+    document.addEventListener('mousemove', e => {
+      const dot = document.createElement('div');
+      dot.className = 'cursor-dot';
+      dot.style.left = (e.clientX - 4) + 'px';
+      dot.style.top = (e.clientY - 4) + 'px';
+      document.body.appendChild(dot);
+      setTimeout(()=> dot.remove(), 900);
+    });
+
+    // -- Clouds parallax --
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      document.querySelectorAll('.cloud').forEach((c,i) => {
+        c.style.transform = `translateY(${scrollY * (0.03 + i*0.008)}px)`;
+      });
+    }, {passive:true});
+
+    // -- Jelly (medusa) movement --
+    const jelly = document.getElementById('jelly');
+    if(jelly){
+      let pos = { x: Math.max(40, window.innerWidth - 260), y: Math.max(40, window.innerHeight - 360) };
+      let vel = { x: (-1.1 - Math.random()*0.6) * (Math.random()>0.5?1:-1), y: (-0.9 - Math.random()*0.4) * (Math.random()>0.5?1:-1) };
+
+      // safe clamp and set initial
+      function clampInitial(){
+        pos.x = Math.min(Math.max(24, pos.x), window.innerWidth - 120);
+        pos.y = Math.min(Math.max(24, pos.y), window.innerHeight - 160);
+        jelly.style.left = pos.x + 'px';
+        jelly.style.top = pos.y + 'px';
+      }
+      clampInitial();
+
+      // animation loop
+      let rafId = null;
+      function move(){
+        pos.x += vel.x;
+        pos.y += vel.y;
+        const maxX = window.innerWidth - 110;
+        const maxY = window.innerHeight - 140;
+        if(pos.x <= 8 || pos.x >= maxX) vel.x *= -1;
+        if(pos.y <= 8 || pos.y >= maxY) vel.y *= -1;
+        jelly.style.left = pos.x + 'px';
+        jelly.style.top = pos.y + 'px';
+        rafId = requestAnimationFrame(move);
+      }
+      move();
+
+      // bubble trail
+      function spawnBubble(x,y){
+        const b = document.createElement('div');
+        Object.assign(b.style,{position:'fixed', left:(x+36)+'px', top:(y+72)+'px', width:'8px', height:'8px', borderRadius:'50%', background:'rgba(177,133,219,0.22)', pointerEvents:'none', zIndex:900, filter:'blur(1px)'});
+        document.body.appendChild(b);
+        b.animate([{transform:'translateY(0)', opacity:1},{transform:'translateY(-80px)', opacity:0}], {duration:2200, easing:'linear'});
+        setTimeout(()=> b.remove(),2400);
+      }
+      let lastBubble = 0;
+      setInterval(()=>{
+        const now = Date.now();
+        if(now - lastBubble > 220){ spawnBubble(pos.x,pos.y); lastBubble = now; }
+      }, 180);
+
+      // keep jelly inside on resize
+      window.addEventListener('resize', ()=>{
+        pos.x = Math.min(pos.x, window.innerWidth - 120);
+        pos.y = Math.min(pos.y, window.innerHeight - 140);
+        jelly.style.left = pos.x + 'px';
+        jelly.style.top = pos.y + 'px';
+      });
+
+    }
+
+    // -- Click particle feedback for buttons/links --
+    document.addEventListener('pointerdown', e => {
+      const el = e.target.closest('a,button');
+      if(!el) return;
+      const dot = document.createElement('div');
+      Object.assign(dot.style,{position:'fixed', width:'10px', height:'10px', borderRadius:'50%', left:(e.clientX-5)+'px', top:(e.clientY-5)+'px', background:'radial-gradient(circle, var(--bright-lavender), var(--lavender-purple))', pointerEvents:'none', zIndex:1500, opacity:0.95});
+      document.body.appendChild(dot);
+      dot.animate([{transform:'scale(1)', opacity:0.95},{transform:'scale(18)', opacity:0}], {duration:420, easing:'cubic-bezier(.2,.9,.2,1)'});
+      setTimeout(()=>dot.remove(),480);
+    });
+
+  }); // DOMContentLoaded
+  </script>
+
 </body>
 </html>
